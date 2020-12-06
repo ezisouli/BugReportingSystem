@@ -1,0 +1,21 @@
+<!-- Add icon library -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<h1>
+  List of Bugs
+</h1>
+<table id="bugs">
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns ; let i = index" (click)="getHeader(i)">
+        {{col}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bug of bugs">
+      <td *ngFor="let i of fields">
+        {{bug[i]}}
+      </td>
+    </tr>
+  </tbody>
+</table>
