@@ -2,7 +2,7 @@
   <nav> 
     <ul class="nav_ul">
       <li><a class="active" href="#home">Home</a></li>
-      <li><a class="active" href="#bugtable">Bug Table</a></li>
+      <li><a class="active" [routerLink]="['bugform']">Bug Table</a></li>
     </ul>
   </nav>
   <div class="container">
@@ -12,7 +12,8 @@
     <h6>Georgiou Katernia, Gerantoni Argiro, Zisouli Evagelia</h6>
     <br><br>
 
-    <app-us1></app-us1>
+    
+    <router-outlet></router-outlet>
     <br>
   </div>
   <div id="footer">
