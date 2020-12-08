@@ -1,24 +1,14 @@
 <div id=wrapper>
-  <nav> 
-    <ul class="nav_ul">
-      <li><a class="active" href="#home">Home</a></li>
-      <li><a class="active" [routerLink]="['bugform']">Bug Table</a></li>
-    </ul>
-  </nav>
+  <app-nav></app-nav>
   <div class="container">
     <h2>Project Future | Powered by ReGeneration and Piraeus Bank</h2>
     <h4>Final Project - Bug reporting system</h4>
     <h6>Team 2</h6>
     <h6>Georgiou Katernia, Gerantoni Argiro, Zisouli Evagelia</h6>
     <br><br>
-
     
-    <router-outlet></router-outlet>
+    <app-content></app-content>
     <br>
   </div>
-  <div id="footer">
-    <footer>
-      <p>&copy; Georgiou Katernia, Gerantoni Argiro, Zisouli Evagelia</p>
-    </footer>
-  </div>
+  <app-footer></app-footer>
 </div>
