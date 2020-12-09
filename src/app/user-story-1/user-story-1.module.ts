@@ -7,25 +7,24 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IntroComponent } from './intro/intro.component';
 
 
 const routes : Routes = [
-  {
-    path:'buglist' , component : Us1Component,
-  },
-  {
-    path: 'bugform' , component : Us2Component
-  }
+  {path:"",component:IntroComponent},
+  {path:'buglist' , component : Us1Component,},
+  {path:'bugform' , component : Us2Component},
 ]
 
 @NgModule({
-  declarations: [Us1Component, Us2Component, NavComponent, FooterComponent, ContentComponent],
+  declarations: [Us1Component, Us2Component, NavComponent, FooterComponent, ContentComponent, IntroComponent],
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule
   ],
   exports:[
+    IntroComponent,
     Us1Component,
     Us2Component,
     NavComponent,

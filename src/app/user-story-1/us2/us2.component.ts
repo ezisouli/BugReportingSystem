@@ -11,9 +11,9 @@ export class Us2Component implements OnInit {
   constructor() { }
 
   form: FormGroup;
-  priority=['minor', 'major', 'critical'];
-  reporter=['QA', 'PO', 'DEV'];
-  status=['ready for testing', 'done', 'rejected'];
+  priority = ['Minor','Major','Critical'];
+  reporter = ['QA', 'PO', 'DEV'];
+  status = ['Ready for testing', 'Done', 'Rejected'];
 
 
   ngOnInit(): void {
@@ -24,16 +24,22 @@ export class Us2Component implements OnInit {
       reporter: new FormControl(null, Validators.required),
       status: new FormControl(null)
     })
+
+
     this.form.get('reporter').valueChanges.subscribe(value=>{
+
       const priorityFormControl = this.form.get('status');
-      if (value==='QA') {
+
+      if (value ==='QA') {
         priorityFormControl.setValidators(Validators.required);
       }
       else{
-        priorityFormControl.clearAsyncValidators();
+        priorityFormControl.clearValidators();
       }
       priorityFormControl.updateValueAndValidity();
+
     })
+
   }
   
 
