@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { PostBugsService } from '../post-bugs.service';
+import { Bugs } from '../us1/Bugs';
+
 
 @Component({
   selector: 'app-us2',
@@ -8,12 +13,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class Us2Component implements OnInit {
 
-  constructor() { }
+  constructor(private postBugsService:PostBugsService ,private route:ActivatedRoute) { }
+
 
   form: FormGroup;
   priority = ['Minor','Major','Critical'];
   reporter = ['QA', 'PO', 'DEV'];
   status = ['Ready for testing', 'Done', 'Rejected'];
+  newBug:Bugs;
 
 
   ngOnInit(): void {
@@ -41,6 +48,17 @@ export class Us2Component implements OnInit {
     })
 
   }
-  
+
+  formSubmit() {
+    if (!this.form.valid){
+    return;
+    }
+    
+    this.newBug = this.form.value;
+    console.log(this.newBug);
+    this.postBugsService.postBug(this.newBug).subscribe( data => {
+      console.log(data)});
+  }
+   
 
 }

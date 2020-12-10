@@ -1,5 +1,4 @@
-h1
-{
+h1{
     text-align: center;
     color: #4CAF50;
 }
@@ -9,21 +8,36 @@ h1
     width: 100%;
   }
   
-  #bugs td, #bugs th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
+#bugs td, #bugs th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
   
-  #bugs tr:nth-child(even){background-color: #f2f2f2;}
+#bugs tr:nth-child(even){background-color: #f2f2f2;}
   
-  #bugs tr:hover {background-color: #ddd;}
+#bugs tr:hover {background-color: #ddd;}
   
-  #bugs th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
+#bugs th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
 
-  #bugs th:hover {background-color:#237425;}
+#bugs th:hover {background-color:#237425;}
+
+.button {
+    display: block;
+    margin:1em;
+    padding: 0.5em;
+    background:green;
+    color:white;
+    font-family: 'Poppins';
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 1px solid;
+    opacity: 0.6;
+}
+
+.button:hover {opacity: 1}

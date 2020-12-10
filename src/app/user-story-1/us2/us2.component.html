@@ -1,74 +1,90 @@
-<form [formGroup]="form">
+<div class="content">
 
   <h1 id="info-title">Report a Bug</h1>
-  <!-- Title -->
-  <div class="form-group">
-    <label for="titleInput">Title</label>
-    <input type="text" class="form-control" id="titleInput" placeholder="Enter title" formControlName="title">
-  </div>
-  <div class="text-danger" *ngIf="form.get('title').errors?.required && form.get('title').dirty">
-    Field is required
-  </div>
-  <!-- Title -->
-
-  <!-- Description -->
-  <div class="form-group">
-    <label for="descriptionInput">Description</label>
-    <textarea class="form-control" id="descriptionInput" placeholder="Enter description" formControlName="description"
-      rows="8" cols="40"></textarea>
-  </div>
-  <div class="text-danger" *ngIf="form.get('description').errors?.required && form.get('description').dirty">
-    Field is required
-  </div>
-  <!-- Description -->
-
-  <!-- Priority -->
-  <div class="form-group">
-    <label class="form-control-label">Priority</label>
-    <select class="form-control" formControlName="priority">
-      <option [ngValue]="null" disabled>Select</option>
-      <option *ngFor="let pr of priority" [ngValue]="pr">
-        {{pr}}
-      </option>
-    </select>
-    <div class="text-danger" *ngIf="form.get('priority').invalid && form.get('priority').dirty">
+  <form [formGroup]="form" (submit)="formSubmit()">
+    <!-- Title -->
+    <div class="form-group">
+      <label for="titleInput">Title</label>
+      <input type="text" class="form-control" id="titleInput" placeholder="Enter title" formControlName="title">
+    </div>
+    <div class="text-danger" *ngIf="form.get('title').errors?.required && form.get('title').dirty">
       Field is required
     </div>
-  </div>
-  <!-- Priority -->
+    <!-- Title -->
 
-  <!-- Reporter -->
-  <div class="form-group">
-    <label class="form-control-label">Reporter</label>
-    <select class="form-control" formControlName="reporter">
-      <option [ngValue]="null" disabled>Select</option>
-      <option *ngFor="let rp of reporter" [ngValue]="rp">
-        {{rp}}
-      </option>
-    </select>
-    <div class="text-danger" *ngIf="form.get('reporter').invalid && form.get('reporter').dirty">
+    <!-- Description -->
+    <div class="form-group">
+      <label for="descriptionInput">Description</label>
+      <textarea class="form-control-description" id="descriptionInput" placeholder="Enter description"
+        formControlName="description"></textarea>
+    </div>
+    <div class="text-danger" *ngIf="form.get('description').errors?.required && form.get('description').dirty">
       Field is required
     </div>
-  </div>
-  <!-- Reporter -->
+    <!-- Description -->
 
-  <!-- Status -->
-  <div class="form-group">
-    <label class="form-control-label">Status</label>
-    <select class="form-control" formControlName="status">
-      <option [ngValue]="null" disabled>Select</option>
-      <option *ngFor="let st of status" [ngValue]="st">
-        {{st}}
-      </option>
-    </select>
-    <div class="text-danger" *ngIf="form.get('status').invalid && form.get('status').dirty">
-      Field is required
+    <!-- Priority -->
+    <div class="form-group">
+      <label class="form-control-label">Priority</label>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="priority" value="1" id="minor">
+        <label class="form-check-label" for="minor">Minor</label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="priority" value="2" id="major">
+        <label class="form-check-label" for="major">Major</label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="priority" value="3" id="critical">
+        <label class="form-check-label" for="critical">Critical</label>
+      </div>
+
+      <div class="text-danger" *ngIf="form.get('priority').invalid && form.get('priority').dirty">
+        Field is required
+      </div>
     </div>
-  </div>
-  <!-- Status -->
+    <!-- Priority -->
 
-  <!-- Submit -->
-  <button class="btn btn-primary" [disabled]="!form.valid">Submit</button>
-  <!-- Submit -->
+    <!-- Reporter -->
+    <div class="form-group">
+      <label class="form-control-label">Reporter</label>
+      <select class="form-control" formControlName="reporter">
+        <option [ngValue]="null" disabled>Select</option>
+        <option *ngFor="let rp of reporter" [ngValue]="rp">
+          {{rp}}
+        </option>
+      </select>
+      <div class="text-danger" *ngIf="form.get('reporter').invalid && form.get('reporter').dirty">
+        Field is required
+      </div>
+    </div>
+    <!-- Reporter -->
 
-</form>
+    <!-- Status -->
+    <div class="form-group">
+      <label class="form-control-label">Status</label>
+      <select class="form-control" formControlName="status">
+        <option [ngValue]="null" disabled>Select</option>
+        <option *ngFor="let st of status" [ngValue]="st">
+          {{st}}
+        </option>
+      </select>
+      <div class="text-danger" *ngIf="form.get('status').invalid && form.get('status').dirty">
+        Field is required
+      </div>
+    </div>
+    <!-- Status -->
+
+    <!-- Submit -->
+    <div class="form-group">
+      <button class="btn" class="submit-button" type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+    <!-- Submit -->
+
+  </form>
+</div>
+
+{{form.value | json}}
