@@ -3,7 +3,7 @@
 <h1>
   List of Bugs
 </h1>
-<button class="btn button" [routerLink]="['/bugform']">Create new bug</button>
+<button class="btn button" [routerLink]="['/bugform', null]">Create new bug</button>
 <table id="bugs">
   <thead>
     <tr>
@@ -17,7 +17,7 @@
       <td *ngFor="let i of fields">
         {{bug[i]}}
       </td>
-      <td> <button (click)="editBug(bug)">Edit Bug</button></td>
+      <td> <md-button id="btn-edit" (click)="editBug(bug)">Edit Bug</md-button></td>
     </tr>
   </tbody>
 </table>
