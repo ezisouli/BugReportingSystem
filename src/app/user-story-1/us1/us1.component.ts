@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetBugsService } from '../get-bugs.service';
 import { Bugs } from './Bugs';
 
@@ -9,8 +10,9 @@ import { Bugs } from './Bugs';
   styleUrls: ['./us1.component.scss']
 })
 export class Us1Component implements OnInit {
+  
 
-  constructor(private getBugsService:GetBugsService) { }
+  constructor(private getBugsService:GetBugsService , private route:ActivatedRoute , private router:Router) { }
 
   columns = ["Title","Priority","Reporter", "Date Created", "Status"];
   fields =["title","priority","reporter","createdAt","status"];
@@ -49,6 +51,12 @@ export class Us1Component implements OnInit {
     })
 
   }
+  editBug(bug : Bugs){
+    //this.form.patchValue({title : ' bug.title '})
+    this.router.navigate(['bugform', bug.id]);
+  }
+
+  
 
 
 }

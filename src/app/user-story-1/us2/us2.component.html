@@ -28,17 +28,17 @@
       <label class="form-control-label">Priority</label>
 
       <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="priority" value="1" id="minor">
+        <input class="form-check-input" type="radio" formControlName="priority" [value]="1" name="priority" id="minor">
         <label class="form-check-label" for="minor">Minor</label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="priority" value="2" id="major">
+        <input class="form-check-input" type="radio" formControlName="priority" [value]="2" name="priority" id="major">
         <label class="form-check-label" for="major">Major</label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="priority" value="3" id="critical">
+        <input class="form-check-input" type="radio" formControlName="priority" [value]="3" name="priority" id="critical">
         <label class="form-check-label" for="critical">Critical</label>
       </div>
 

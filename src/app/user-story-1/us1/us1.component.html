@@ -17,6 +17,7 @@
       <td *ngFor="let i of fields">
         {{bug[i]}}
       </td>
+      <td> <button (click)="editBug(bug)">Edit Bug</button></td>
     </tr>
   </tbody>
 </table>

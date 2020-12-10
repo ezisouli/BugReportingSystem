@@ -13,7 +13,8 @@ import { IntroComponent } from './intro/intro.component';
 const routes : Routes = [
   {path:"",component:IntroComponent},
   {path:'buglist' , component : Us1Component,},
-  {path:'bugform' , component : Us2Component},
+  {path:'bugform/:id' , component : Us2Component},
+  
 ]
 
 @NgModule({

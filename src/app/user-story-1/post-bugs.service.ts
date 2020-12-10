@@ -24,5 +24,6 @@ export class PostBugsService {
     //return this.http.post<Bugs>(this.url,body,{'headers':headers});
     return this.http.post<Bugs>(this.url,bugs);
   }
+  
 
 }
