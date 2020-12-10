@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PostBugsService } from '../post-bugs.service';
 import { Bugs } from '../us1/Bugs';
@@ -13,7 +13,7 @@ import { Bugs } from '../us1/Bugs';
 })
 export class Us2Component implements OnInit {
 
-  constructor(private postBugsService:PostBugsService ,private route:ActivatedRoute) { }
+  constructor(private postBugsService:PostBugsService ,private route:ActivatedRoute , private router:Router) { }
 
 
   form: FormGroup;
@@ -57,7 +57,8 @@ export class Us2Component implements OnInit {
     this.newBug = this.form.value;
     console.log(this.newBug);
     this.postBugsService.postBug(this.newBug).subscribe( data => {
-      console.log(data)});
+      console.log(data)
+      this.router.navigate(['buglist/'])});
   }
    
 
