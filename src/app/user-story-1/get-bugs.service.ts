@@ -12,8 +12,6 @@ export class GetBugsService {
   constructor(private http:HttpClient) { }
 
   url:string = "https://bug-report-system-server.herokuapp.com/bugs";
-  //url:string ="https://bug-report-system-server.herokuapp.com/bugs?sort=priority,asc";
- 
 
   getBugs():Observable<Bugs[]>{
     return this.http.get<Bugs[]>(this.url);
@@ -22,6 +20,7 @@ export class GetBugsService {
   getBugsSorted(header:string,order:string):Observable<Bugs[]>{
     return this.http.get<Bugs[]>("https://bug-report-system-server.herokuapp.com/bugs?sort="+header+","+order);
   }
+  
   getBug(id: string):Observable<Bugs>{
     return this.http.get<Bugs>(this.url+'/'+id);
   }
