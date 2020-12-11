@@ -16,5 +16,9 @@ export class PostBugsService {
   postBug(bugs:Bugs):Observable<Bugs>{
     return this.http.post<Bugs>(this.url,bugs);
   }
-  
+
+  updateBug(bugs:Bugs):Observable<void>{
+    return this.http.put<void>(this.url+'/'+bugs.id,bugs);
+  }
+
 }
