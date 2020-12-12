@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GetBugsService } from '../get-bugs.service';
@@ -15,7 +15,7 @@ import { Bugs } from '../us1/Bugs';
 export class Us2Component implements OnInit {
    param : string;
 
-  constructor(private postBugsService:PostBugsService ,private route:ActivatedRoute , private router:Router , private getBugsService:GetBugsService) {
+  constructor( private postBugsService:PostBugsService ,private route:ActivatedRoute , private router:Router , private getBugsService:GetBugsService) {
     this.param =this.route.snapshot.params.id
     
    }
@@ -26,6 +26,8 @@ export class Us2Component implements OnInit {
   reporter = ['QA', 'PO', 'DEV'];
   status = ['Ready for testing', 'Done', 'Rejected'];
   newBug:Bugs;
+  comments: FormArray[];
+  
 
 
   ngOnInit(): void {
@@ -34,8 +36,15 @@ export class Us2Component implements OnInit {
       description: new FormControl(null, Validators.required),
       priority: new FormControl(null, Validators.required),
       reporter: new FormControl(null, Validators.required),
-      status: new FormControl(null)
+      status: new FormControl(null),
+      comments: new FormArray([
+        new FormGroup({
+          newDescription: new FormControl(null),
+          newReporter: new FormControl(null)
+        })        
+      ])
     })
+
 
     this.getBugsService.getBugById(this.param).subscribe(data => {
       this.form.controls['title'].setValue(data.title),
@@ -44,7 +53,7 @@ export class Us2Component implements OnInit {
       this.form.controls['status'].setValue(data.status),
       this.form.controls['reporter'].setValue(data.reporter)
     });
-
+    
 
     this.form.get('reporter').valueChanges.subscribe(value=>{
 
@@ -57,9 +66,7 @@ export class Us2Component implements OnInit {
         priorityFormControl.clearValidators();
       }
       priorityFormControl.updateValueAndValidity();
-
     })
-
   }
 
   formSubmit():void {
@@ -85,6 +92,12 @@ export class Us2Component implements OnInit {
     }
   
   }
-   
+
+  addDescription(): any{
+    (this.form.get('comments') as FormArray).push(new FormGroup({
+      'description': new FormControl('null'),
+      'reporter': new FormControl('null')
+    }))
+  }
 
 }

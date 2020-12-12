@@ -78,6 +78,19 @@
     </div>
     <!-- Status -->
 
+    <!-- Coments -->
+    <div class="form-group" id="new-form">
+      <label>Comments</label>
+      <div class="form-array" formArrayName="comments">
+        <label for="DescriptionInput">Description</label>
+        <input type="text" class="form-control" id="DescriptionInput" placeholder="Enter new description" formControlName="newDescription">
+        <label for="NameInput">Name</label>
+        <input type="text" class="form-control" id="NameInput" placeholder="Enter new reporter's name" formControlName="newReporter">
+        <button class="btn" class="add-description" type="button" (click)=addDescription()>+</button>
+      </div>
+  </div>
+    <!-- Coments -->
+
     <!-- Submit -->
     <div class="form-group">
       <button class="btn" class="submit-button" type="submit" [disabled]="!form.valid">Submit</button>
