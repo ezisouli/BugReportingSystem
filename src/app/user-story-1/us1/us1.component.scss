@@ -1,6 +1,7 @@
 h1{
     text-align: center;
-    color: #4CAF50;
+    color: #2b363b;
+    padding-top: 10px;
 }
 #bugs {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -21,23 +22,37 @@ h1{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: #52796f;
   color: white;
 }
 
-#bugs th:hover {background-color:#237425;}
+#bugs th:hover {background-color:#41605f;}
 
 .button {
     display: block;
     margin:1em;
     padding: 0.5em;
-    background:green;
+    background: #41605f;
     color:white;
     font-family: 'Poppins';
     border-radius: 1rem;
     cursor: pointer;
     border: 1px solid;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .button:hover {opacity: 1}
+
+#btn-edit{
+  //display: block;
+  
+  margin:1em;
+  padding: 0.5em;
+  background: #41605f;
+  color:white;
+  font-family: 'Poppins';
+  border-radius: 1rem;
+  cursor: pointer;
+  border: 1px solid;
+  opacity: 0.8;
+}
