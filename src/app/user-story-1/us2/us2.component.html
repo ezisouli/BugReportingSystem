@@ -81,7 +81,7 @@
     <!-- Coments -->
     <div class="form-group" id="new-form">
       <label>Comments</label>
-      <div class="form-array" formArrayName="comments">
+      <div class="form-array" *ngFor="let comment of form.get('comments').controls" [formGroup]="comment">
         <label for="DescriptionInput">Description</label>
         <input type="text" class="form-control" id="DescriptionInput" placeholder="Enter new description" formControlName="newDescription">
         <label for="NameInput">Name</label>
