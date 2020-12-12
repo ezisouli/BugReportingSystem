@@ -37,7 +37,7 @@ export class Us2Component implements OnInit {
       status: new FormControl(null)
     })
 
-    this.getBugsService.getBug(this.param).subscribe(data => {
+    this.getBugsService.getBugById(this.param).subscribe(data => {
       this.form.controls['title'].setValue(data.title),
       this.form.controls['description'].setValue(data.description),
       this.form.controls['priority'].setValue(data.priority),
@@ -62,16 +62,28 @@ export class Us2Component implements OnInit {
 
   }
 
-  formSubmit() {
+  formSubmit():void {
+    
     if (!this.form.valid){
     return;
     }
-    
+
+    //Created or updated bug
     this.newBug = this.form.value;
     console.log(this.newBug);
-    this.postBugsService.postBug(this.newBug).subscribe( data => {
+
+    //Check if bug existed or just created
+    if(!this.newBug.id){
+      this.postBugsService.postBug(this.newBug).subscribe( data => {
       console.log(data)
-      this.router.navigate(['buglist/'])});
+      this.router.navigate(['buglist/'])})
+    }
+    else{
+      this.postBugsService.updateBug(this.newBug).subscribe( data => {
+      console.log(data)
+      this.router.navigate(['buglist/'])})
+    }
+  
   }
    
 

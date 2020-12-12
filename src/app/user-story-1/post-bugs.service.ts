@@ -14,16 +14,11 @@ export class PostBugsService {
   url:string = "https://bug-report-system-server.herokuapp.com/bugs";
   
   postBug(bugs:Bugs):Observable<Bugs>{
-   
-    //Since we are sending data as JSON
-    //const headers = { 'content-type': 'application/json'};
-    
-    //JSON.stringify(bugs) converts the bugs object into a JSON string
-    //const body=JSON.stringify(bugs);  
-
-    //return this.http.post<Bugs>(this.url,body,{'headers':headers});
     return this.http.post<Bugs>(this.url,bugs);
   }
-  
+
+  updateBug(bugs:Bugs):Observable<void>{
+    return this.http.put<void>(this.url+'/'+bugs.id,bugs);
+  }
 
 }
