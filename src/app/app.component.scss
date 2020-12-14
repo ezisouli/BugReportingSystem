@@ -1,16 +1,16 @@
-#wrapper{
-    width: 100vw;
-    height: calc(100vw * (9/16));
-    background-color: #eaede8;
-}
-
-.container{
-    width: 100%;
+body, html {
     height: 100%;
-    //overflow: hidden;
-    //margin: 0;
-    //padding: 0;
-
+    width:100%;
+    min-height:100%;
 }
 
+#wrapper{
+    //width: 100vw;
+    height: calc(100vw * (9/16));
+}
+
+.midsection{
+    height: 100%;
+    background-color: #eaede8;    
+}
 
