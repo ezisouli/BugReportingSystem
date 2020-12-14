@@ -33,6 +33,7 @@ export class Us1Component implements OnInit {
 
   }
 
+  //Sorting
   getHeader(thesi:number){
     this.header = this.fields[thesi];
     this.clicked[thesi] = !this.clicked[thesi];
