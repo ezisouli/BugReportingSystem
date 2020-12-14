@@ -51,12 +51,10 @@ export class Us1Component implements OnInit {
     })
 
   }
+  
   editBug(bug : Bugs){
-    //this.form.patchValue({title : ' bug.title '})
     this.router.navigate(['bugform', bug.id]);
   }
-
-  
 
 
 }
