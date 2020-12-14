@@ -61,24 +61,15 @@ export class DataTableComponent implements OnInit {
     console.log(bug.id);
   }
 
-  deleteBug(bug : Bugs, index: number){
+  deleteBug(bug : Bugs){
     console.log(bug.id);
-
     this.deleteBugsService.deleteBug(bug).subscribe(
       () => {
-        //this.bugs[this.bugs.indexOf(this.selectedbug)] = bug;
+        const index =this.bugs.indexOf(bug);
         this.bugs.splice(index,1);
-        //console.log(index);
-      
-        
-    })
-    //this.router.navigate(['buglist/']);
+        console.log(index);
   
-
-  /*deleteBug(item: Bugs) {
-    this.bugs = []
-    this.deleteBug.deleteBugs(bug.id).subscribe() => {
-    this.bugs.push()}}
-
-*/
+    })
+  }
+ 
 }
