@@ -1,24 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Bugs } from './us1/Bugs';
-
+import { Bugs } from '../dataTable/Bugs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostBugsService {
+export class DeleteBugsService {
 
   constructor(private http:HttpClient) { }
 
   url:string = "https://bug-report-system-server.herokuapp.com/bugs";
   
-  postBug(bugs:Bugs):Observable<Bugs>{
-    return this.http.post<Bugs>(this.url,bugs);
+  deleteBug(bugs:Bugs):Observable<{}>{
+    return this.http.delete(this.url+'/'+bugs.id);
   }
 
-  updateBug(bugs:Bugs):Observable<void>{
-    return this.http.put<void>(this.url+'/'+bugs.id,bugs);
-  }
-
+  
 }

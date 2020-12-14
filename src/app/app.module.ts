@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserStory1Module } from './user-story-1/user-story-1.module';
+
+import { BugSystemModule } from './bug-system/bug-system.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { UserStory1Module } from './user-story-1/user-story-1.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserStory1Module,
+    BugSystemModule,
     HttpClientModule
   ],
   providers: [],
