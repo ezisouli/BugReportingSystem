@@ -23,7 +23,6 @@ export class Us1Component implements OnInit {
   sort:string[] =["desc","asc"];
   sorting:string;
 
-  //headerClicked:string =
 
   ngOnInit(): void {
 
@@ -54,6 +53,7 @@ export class Us1Component implements OnInit {
   
   editBug(bug : Bugs){
     this.router.navigate(['bugform', bug.id]);
+    console.log(bug.id);
   }
 
 

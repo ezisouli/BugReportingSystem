@@ -1,7 +1,11 @@
 <h1>
   List of Bugs
 </h1>
+<<<<<<< HEAD
 <button class="btn button" [routerLink]="['/bugform', null]">Create new bug</button>
+=======
+<button class="btn button" [routerLink]="['/bugform','']">Create new bug</button>
+>>>>>>> efc0202528664bcfff1d7a3c2daeb619d0ba67b3
 <table id="bugs">
   <thead>
     <tr>
@@ -22,7 +26,9 @@
           </span>
         </ng-template>
       </td>
-      <td> <md-button id="btn-edit" (click)="editBug(bug)">Edit Bug</md-button></td>
+      <td>
+        <md-button id="btn-edit" (click)="editBug(bug)">Edit Bug</md-button>
+      </td>
     </tr>
   </tbody>
 </table>
