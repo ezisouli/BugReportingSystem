@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetBugsService } from '../get-bugs.service';
-import { PostBugsService } from '../post-bugs.service';
-import { Bugs } from '../us1/Bugs';
+import { GetBugsService } from '../Services/get-bugs.service';
+import { PostBugsService } from '../Services/post-bugs.service';
+import { Bugs } from '../dataTable/Bugs';
 
 
 @Component({
-  selector: 'app-us2',
-  templateUrl: './us2.component.html',
-  styleUrls: ['./us2.component.scss']
+  selector: 'app-dataForm',
+  templateUrl: './dataForm.component.html',
+  styleUrls: ['./dataForm.component.scss']
 })
-export class Us2Component implements OnInit {
+export class DataFormComponent implements OnInit {
    
   priority = ['Minor','Major','Critical'];
   reporter = ['QA', 'PO', 'DEV'];
