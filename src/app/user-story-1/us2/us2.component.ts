@@ -24,7 +24,9 @@ export class Us2Component implements OnInit {
   constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
     private getBugsService:GetBugsService, private fb:FormBuilder) {
     this.param =this.route.snapshot.params.id
-    console.log(this.param);
+    console.log("param");
+    console.log(this.route.snapshot.params);
+    
    }
 
   ngOnInit(): void {
@@ -61,16 +63,11 @@ export class Us2Component implements OnInit {
       this.form.controls['priority'].setValue(data.priority),
       this.form.controls['status'].setValue(data.status),
       this.form.controls['reporter'].setValue(data.reporter)
-      //this.form.controls['Description'].setValue(data.comments['reporter']),
-      // this.form.controls['Reporter'].setValue(data.comments['description'])
+      //this.form.controls['Description'].setValue(data.comments['reporter'])
+      //this.form.controls['Reporter'].setValue(data.comments['description'])
      
     });
-
-    console.log( this.form.controls['reporter'] );
-
-  
-
-
+    
     this.form.get('reporter').valueChanges.subscribe(value=>{
 
       const priorityFormControl = this.form.get('status');
