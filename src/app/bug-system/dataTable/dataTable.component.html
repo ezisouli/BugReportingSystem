@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let bug of bugs">
+    <tr *ngFor="let bug of bugs, let d of index">
       <td *ngFor="let i of fields">
         <span *ngIf=" bug[i] === bug.createdAt ; else Other">
           {{bug[i] | date:'short'}}
@@ -24,6 +24,9 @@
       </td>
       <td>
         <md-button id="btn-edit" (click)="editBug(bug)">Edit Bug</md-button>
+      </td>
+      <td>
+        <md-button id="btn-delete" *ngIf="selectedbug" (click)="deleteBug(bug,d)">Delete Bug</md-button>
       </td>
     </tr>
   </tbody>

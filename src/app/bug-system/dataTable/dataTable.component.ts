@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DeleteBugsService } from '../Services/delete-bugs.service';
 import { GetBugsService } from '../Services/get-bugs.service';
 import { Bugs } from './Bugs';
 
@@ -12,7 +13,10 @@ import { Bugs } from './Bugs';
 export class DataTableComponent implements OnInit {
   
 
-  constructor(private getBugsService:GetBugsService , private route:ActivatedRoute , private router:Router) { }
+  constructor(private getBugsService:GetBugsService ,
+     private route:ActivatedRoute ,
+     private router:Router,
+     private deleteBugsService:DeleteBugsService) { }
 
   columns = ["Title","Priority","Reporter", "Date Created", "Status"];
   fields =["title","priority","reporter","createdAt","status"];
@@ -56,5 +60,24 @@ export class DataTableComponent implements OnInit {
     console.log(bug.id);
   }
 
+  deleteBug(bug : Bugs, index: number){
+    console.log(bug.id);
 
+    this.deleteBugsService.deleteBug(bug).subscribe(
+      () => {
+        //this.bugs[this.bugs.indexOf(this.selectedbug)] = bug;
+        this.bugs.splice(index,1);
+        //console.log(index);
+      
+        
+    })
+    //this.router.navigate(['buglist/']);
+  
+
+  /*deleteBug(item: Bugs) {
+    this.bugs = []
+    this.deleteBug.deleteBugs(bug.id).subscribe() => {
+    this.bugs.push()}}
+
+*/
 }
