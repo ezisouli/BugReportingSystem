@@ -1,33 +1,33 @@
-<h1>
-  List of Bugs
-</h1>
-<button class="btn button" [routerLink]="['/bugform','']">Create new bug</button>
-<table id="bugs">
-  <thead>
-    <tr>
-      <th *ngFor="let col of columns ; let i = index" (click)="getHeader(i)">
-        {{col}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let bug of bugs">
-      <td *ngFor="let i of fields">
-        <span *ngIf=" bug[i] === bug.createdAt ; else Other">
-          {{bug[i] | date:'short'}}
-        </span>
-        <ng-template #Other>
-          <span>
-            {{bug[i]}}
+<div class="content">
+  <h1>List of Bugs</h1>
+  <button class="btn button" id="btn-createt" [routerLink]="['/bugform','']">Create new bug</button>
+  <table id="bugs">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns ; let i = index" (click)="getHeader(i)">
+          {{col}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bug of bugs">
+        <td *ngFor="let i of fields">
+          <span *ngIf=" bug[i] === bug.createdAt ; else Other">
+            {{bug[i] | date:'short'}}
           </span>
-        </ng-template>
-      </td>
-      <td>
-        <md-button id="btn-edit" (click)="editBug(bug)">Edit Bug</md-button>
-      </td>
-      <td>
-        <md-button id="btn-delete" (click)="deleteBug(bug)">Delete Bug</md-button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <ng-template #Other>
+            <span>
+              {{bug[i]}}
+            </span>
+          </ng-template>
+        </td>
+        <td>
+          <md-button class="btn button" id="btn-edit" (click)="editBug(bug)">Edit Bug</md-button>
+        </td>
+        <td>
+          <md-button class="btn button" id="btn-delete" (click)="deleteBug(bug)">Delete Bug</md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

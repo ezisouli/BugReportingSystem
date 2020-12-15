@@ -1,16 +1,18 @@
-body, html {
-    height: 100%;
-    width:100%;
-    min-height:100%;
-}
+// body, html {
+//     height: 100%;
+//     width:100%;
+//     min-height:100%;
+// }
 
 #wrapper{
-    //width: 100vw;
-    height: calc(100vw * (9/16));
+    width: 100%;
+    height:100%;
+    //height: calc(100vw * (9/16));   
 }
 
 .midsection{
-    height: 100%;
+    width:100%;
+    height:100%;
     background-color: #eaede8;    
 }
 
