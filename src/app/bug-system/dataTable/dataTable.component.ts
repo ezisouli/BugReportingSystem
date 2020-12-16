@@ -72,8 +72,20 @@ export class DataTableComponent implements OnInit {
         const index =this.bugs.indexOf(bug);
         this.bugs.splice(index,1);
         console.log(index);
+
+        // this.getBugsService.getBugs().subscribe(
+        //   (data) => {
+        //     this.bugs = data;
+        // }) 
+
+        this.getBugsService.getBugPage(this.page).subscribe(
+          (data) => {
+            this.bugs = data;
+        }) 
   
     })
+    
+    
   }
 
   previousPage(){
@@ -92,22 +104,18 @@ export class DataTableComponent implements OnInit {
     this.getBugsService.getBugPage(this.page+1).subscribe(
       (data) => {
         this.bugTest = data;
+
+        console.log("length ",this.bugTest.length); 
+
+      if(this.bugTest.length>0){
+        this.page++;
+        this.getBugsService.getBugPage(this.page).subscribe(
+          (data) => {
+            this.bugs = data;
+        })
+        console.log("page n",this.page);
+      }
     })
-
-    
-
-    console.log("length ",this.bugTest.length); 
-
-    if(this.bugTest.length>0){
-      this.page++;
-      this.getBugsService.getBugPage(this.page).subscribe(
-        (data) => {
-          this.bugs = data;
-      })
-      console.log("page n",this.page);
-    }
-    
-   
   }
  
 }
