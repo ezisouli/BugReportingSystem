@@ -2,7 +2,7 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     text-align: center;
     line-height: 1.4;
-    //@error: url('bug.jpg');
+    //background-image: url('bug.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
@@ -14,7 +14,7 @@
 
 h1{
     text-align: center;
-    color: #2b363b;
+    color:white;
     padding-top: 10px;
 }
 
@@ -69,4 +69,13 @@ form {
 }
 
 .submit-button:hover {opacity: 1}
+
+
+/* validators */
+
+input.ng-invalid{
+    &.ng-dirty{
+        border: 1px solid red;
+    }
+}
 

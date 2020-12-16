@@ -8,7 +8,7 @@ import { Bugs } from '../dataTable/Bugs';
 
 @Component({
   selector: 'app-dataForm',
-  templateUrl: './dataForm.component.html',
+  templateUrl:'./dataForm.component.html',
   styleUrls: ['./dataForm.component.scss']
 })
 export class DataFormComponent implements OnInit {
@@ -20,30 +20,17 @@ export class DataFormComponent implements OnInit {
   param : string; 
   newBug:Bugs;
   form: FormGroup;
+  submitted = false;
 
   constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
     private getBugsService:GetBugsService, private fb:FormBuilder) {
-    this.param =this.route.snapshot.params.id
+    this.param = this.route.snapshot.params.id
     console.log("param");
     console.log(this.route.snapshot.params);
     
-   }
+  }
 
   ngOnInit(): void {
-    // this.form= new FormGroup({
-    //   title: new FormControl(null, Validators.required),
-    //   description: new FormControl(null, Validators.required),
-    //   priority: new FormControl(null, Validators.required),
-    //   reporter: new FormControl(null, Validators.required),
-    //   status: new FormControl(null),
-    //   comments: new FormArray([
-    //     new FormGroup({
-    //       Description: new FormControl(null),
-    //       Reporter: new FormControl(null)
-    //     })        
-    //   ])
-    // })
-
     this.form = this.fb.group({
       title:[null, Validators.required],
       description:[null, Validators.required],
@@ -56,7 +43,6 @@ export class DataFormComponent implements OnInit {
     })
 
     
-
     this.getBugsService.getBugById(this.param).subscribe(data => {
       this.form.controls['title'].setValue(data.title),
       this.form.controls['description'].setValue(data.description),
@@ -103,11 +89,16 @@ export class DataFormComponent implements OnInit {
     this.comments.push(this.commentsItem());
   }
 
-
+  /* Submit form */
   formSubmit():void {
     
+    
+    /* Show Validators on submit */
+    this.submitted = true;
+    
+     // stop here if form is invalid
     if (!this.form.valid){
-    return;
+      return;
     }
 
     //Created or updated bug

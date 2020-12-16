@@ -1,6 +1,6 @@
 <div class="content">
   <h1>List of Bugs</h1>
-  <button class="btn button" id="btn-createt" [routerLink]="['/bugform','']">Create new bug</button>
+  <button class="btn button" id="btn-create" [routerLink]="['/bugform','']">Create new bug</button>
   <table id="bugs">
     <thead>
       <tr>
@@ -30,4 +30,9 @@
       </tr>
     </tbody>
   </table>
+  <div>
+    <button class="btn button" id="btn-previous" (click)="previousPage()">Previous</button>
+    <div>Page {{page}}</div>
+    <button class="btn button" id="btn-next" (click)="nextPage()">Next</button>
+  </div>
 </div>

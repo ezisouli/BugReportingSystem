@@ -25,5 +25,9 @@ export class GetBugsService {
     return this.http.get<Bugs>(this.url+'/'+id);
   }
 
+  getBugPage(page:number):Observable<Bugs[]>{
+    return this.http.get<Bugs[]>("https://bug-report-system-server.herokuapp.com/bugs?page="+page);
+  }
+
   
 }

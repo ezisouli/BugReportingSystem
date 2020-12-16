@@ -21,11 +21,15 @@ export class DataTableComponent implements OnInit {
   columns = ["Title","Priority","Reporter", "Date Created", "Status"];
   fields =["title","priority","reporter","createdAt","status"];
   bugs : Bugs[] = [];
+  bugTest :Bugs[] = [];
 
   header:string;
-  clicked:boolean[]=[false,false,false,false,false];
+  clicked:boolean[]=[true,false,false,false,false];
   sort:string[] =["desc","asc"];
   sorting:string;
+
+  //pagination
+  page:number = 0;
 
 
   ngOnInit(): void {
@@ -44,7 +48,7 @@ export class DataTableComponent implements OnInit {
     if(this.clicked[thesi]){
       this.sorting =this.sort[1];
     }
-    else{this.sorting =this.sort[0];}
+    else{this.sorting = this.sort[0];}
     console.log(this.header);
     console.log(this.sorting);
     console.log(this.clicked);
@@ -70,6 +74,40 @@ export class DataTableComponent implements OnInit {
         console.log(index);
   
     })
+  }
+
+  previousPage(){
+    if(this.page>0){
+      this.page--;
+      this.getBugsService.getBugPage(this.page).subscribe(
+        (data) => {
+          this.bugs = data;
+      })
+    }
+    console.log("page p",this.page);
+  }
+
+  nextPage(){
+
+    this.getBugsService.getBugPage(this.page+1).subscribe(
+      (data) => {
+        this.bugTest = data;
+    })
+
+    
+
+    console.log("length ",this.bugTest.length); 
+
+    if(this.bugTest.length>0){
+      this.page++;
+      this.getBugsService.getBugPage(this.page).subscribe(
+        (data) => {
+          this.bugs = data;
+      })
+      console.log("page n",this.page);
+    }
+    
+   
   }
  
 }

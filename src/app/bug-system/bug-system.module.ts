@@ -11,7 +11,7 @@ import { DataFormComponent } from './dataForm/dataForm.component';
 
 
 const routes : Routes = [
-  {path:"",component:IntroComponent},
+  {path:'',component:IntroComponent},
   {path:'buglist' , component : DataTableComponent},
   {path:'bugform/:id' , component : DataFormComponent},
   
