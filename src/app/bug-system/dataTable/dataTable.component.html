@@ -13,7 +13,7 @@
       <tr *ngFor="let bug of bugs">
         <td *ngFor="let i of fields">
           <span *ngIf=" bug[i] === bug.createdAt ; else Other">
-            {{bug[i] | date:'short'}}
+            {{bug[i] | date:'d/M/yy, h:mm a'}}
           </span>
           <ng-template #Other>
             <span>

@@ -73,11 +73,7 @@ export class DataTableComponent implements OnInit {
         this.bugs.splice(index,1);
         console.log(index);
 
-        // this.getBugsService.getBugs().subscribe(
-        //   (data) => {
-        //     this.bugs = data;
-        // }) 
-
+        //refresh the page
         this.getBugsService.getBugPage(this.page).subscribe(
           (data) => {
             this.bugs = data;
