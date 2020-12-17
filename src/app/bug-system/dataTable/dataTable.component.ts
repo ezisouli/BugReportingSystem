@@ -23,6 +23,12 @@ export class DataTableComponent implements OnInit {
   bugs : Bugs[] = [];
   bugTest :Bugs[] = [];
 
+
+  priority = ['Minor','Major','Critical'];
+  reporter = ['QA', 'PO', 'DEV'];
+  status = ['Ready for testing', 'Done', 'Rejected'];
+
+
   header:string;
   clicked:boolean[]=[true,false,false,false,false];
   sort:string[] =["desc","asc"];
@@ -116,6 +122,9 @@ export class DataTableComponent implements OnInit {
         console.log("page n",this.page);
       }
     })
+  }
+  searchBug(){
+    
   }
  
 }

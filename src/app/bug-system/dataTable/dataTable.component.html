@@ -4,6 +4,47 @@
   <table id="bugs">
     <thead>
       <tr>
+        <th>
+          <input type="text"  placeholder="Search title" >
+        </th>
+        <th>
+          <select >
+            <option value="" disabled selected>Search Priority</option>
+            
+            <option *ngFor="let pr of priority" [ngValue]="pr">
+              {{pr}}
+            </option>
+          </select>
+        </th>
+        <th>
+          <select >
+            <option value="" disabled selected>Search Reporter</option>
+            
+            <option *ngFor="let rp of reporter" [ngValue]="rp">
+              {{rp}}
+            </option>
+          </select>
+        </th>
+        <th>
+          <input type="text"  placeholder="Search Date" >
+        </th>
+        <th>
+          <select >
+            <option value="" disabled selected>Search Status</option>
+            
+            <option *ngFor="let st of status" [ngValue]="st">
+              {{st}}
+            </option>
+          </select>
+        </th>
+        <th colspan="2" id="btn-search" >
+          <button md-button class="btn button"  (click)="searchBug()">Search Bug</button >
+        
+        </th>
+
+        
+      </tr>
+      <tr>
         <th *ngFor="let col of columns ; let i = index" (click)="getHeader(i)">
           {{col}}
         </th>
