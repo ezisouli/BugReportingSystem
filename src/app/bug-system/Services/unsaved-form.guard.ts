@@ -13,7 +13,7 @@ export class UnsavedFormGuard implements CanDeactivate<DataFormComponent> {
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean {
       if (!component.canDeactivate()) {      
-        return window.confirm("Are you sure you want to leave the page?");    }
+        return window.confirm("You have unsaved data. Are you sure you want to leave the page?");    }
     return true;
   }
   
