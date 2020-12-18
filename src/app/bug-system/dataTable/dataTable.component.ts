@@ -122,13 +122,14 @@ export class DataTableComponent implements OnInit {
       }
     })
   }
-  titleValue: string
-  priorityValue : any 
-  reporterValue: string = "QA";
-  statusValue: string= "Ready for testing";
+
+  /*get values from search*/
+  titleValue: string ='';
+  priorityValue : any ='';//????????
+  reporterValue: string = '';
+  statusValue: string= '';
 
   searchBug(){
-    
 
      this.getBugsService.getBugsSearch(this.titleValue,
        this.priorityValue,this.reporterValue,this.statusValue).subscribe(

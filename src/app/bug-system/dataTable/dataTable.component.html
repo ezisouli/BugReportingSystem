@@ -7,18 +7,19 @@
       <!-- Search -->
       <!-- <form [formGroup]="listForm"> -->
       <tr>
-        <th><input  #searchtitle id="search-title"  [(ngModel)]="titleValue"  type="text" placeholder="Search title"></th>
-        
+        <th>
+          <input #searchtitle id="search-title" [(ngModel)]="titleValue" type="text" placeholder="Search title">
+        </th>
         <th>
           <select [(ngModel)]="priorityValue">
             <option value="" disabled selected>Search Priority</option>
-            <option *ngFor="let pr of priority ; let i of index" [ngValue]="pr" [value]="i" >
+            <option *ngFor="let pr of priority;let i = index" [ngValue]="i+1">
               {{pr}}
             </option>
           </select>
         </th>
         <th>
-          <select>
+          <select [(ngModel)]="reporterValue">
             <option value="" disabled selected>Search Reporter</option>
             <option *ngFor="let rp of reporter" [ngValue]="rp">
               {{rp}}
@@ -27,7 +28,7 @@
         </th>
         <th><input type="text" placeholder="Search Date"></th>
         <th>
-          <select>
+          <select [(ngModel)]="statusValue">
             <option value="" disabled selected>Search Status</option>
             <option *ngFor="let st of status" [ngValue]="st">
               {{st}}
