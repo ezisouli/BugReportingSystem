@@ -3,53 +3,53 @@
   <button class="btn button" id="btn-create" [routerLink]="['/bugform','']">Create new bug</button>
   <table id="bugs">
     <thead>
+
+      <!-- Search -->
+      <!-- <form [formGroup]="listForm"> -->
       <tr>
+        <th><input type="text" placeholder="Search title"></th>
         <th>
-          <input type="text"  placeholder="Search title" >
-        </th>
-        <th>
-          <select >
+          <select>
             <option value="" disabled selected>Search Priority</option>
-            
             <option *ngFor="let pr of priority" [ngValue]="pr">
               {{pr}}
             </option>
           </select>
         </th>
         <th>
-          <select >
+          <select>
             <option value="" disabled selected>Search Reporter</option>
-            
             <option *ngFor="let rp of reporter" [ngValue]="rp">
               {{rp}}
             </option>
           </select>
         </th>
+        <th><input type="text" placeholder="Search Date"></th>
         <th>
-          <input type="text"  placeholder="Search Date" >
-        </th>
-        <th>
-          <select >
+          <select>
             <option value="" disabled selected>Search Status</option>
-            
             <option *ngFor="let st of status" [ngValue]="st">
               {{st}}
             </option>
           </select>
         </th>
-        <th colspan="2" id="btn-search" >
-          <button md-button class="btn button"  (click)="searchBug()">Search Bug</button >
-        
+        <th colspan="2" id="btn-search">
+          <button md-button class="btn button" (click)="searchBug()">Search Bug</button>
         </th>
-
-        
       </tr>
+      <!-- </form> -->
+      <!-- Search -->
+
+      <!-- Headers -->
       <tr>
         <th *ngFor="let col of columns ; let i = index" (click)="getHeader(i)">
           {{col}}
         </th>
       </tr>
+      <!-- Headers -->
+
     </thead>
+
     <tbody>
       <tr *ngFor="let bug of bugs">
         <td *ngFor="let i of fields">
@@ -77,3 +77,5 @@
     <button class="btn button" id="btn-next" (click)="nextPage()">Next</button>
   </div>
 </div>
+
+<!-- {{listForm.value | json}} -->

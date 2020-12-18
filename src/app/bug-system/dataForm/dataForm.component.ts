@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GetBugsService } from '../Services/get-bugs.service';
 import { PostBugsService } from '../Services/post-bugs.service';
 import { Bugs } from '../dataTable/Bugs';
+import { Comments } from '../dataTable/Comments';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class DataFormComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void  {
     this.form = this.fb.group({
       title:[null, Validators.required],
       description:[null, Validators.required],
@@ -48,7 +49,11 @@ export class DataFormComponent implements OnInit {
       this.form.controls['description'].setValue(data.description),
       this.form.controls['priority'].setValue(data.priority),
       this.form.controls['status'].setValue(data.status),
-      this.form.controls['reporter'].setValue(data.reporter)
+      this.form.controls['reporter'].setValue(data.reporter),
+      this.form.setControl("comments",this.setExistingComments(data.comments))
+      console.log(data.comments)
+      // this.form.setControl('comments', this.fb.array(data.comments || []))
+    
       //this.form.controls['Description'].setValue(data.comments['reporter'])
       //this.form.controls['Reporter'].setValue(data.comments['description'])
      
@@ -84,10 +89,30 @@ export class DataFormComponent implements OnInit {
     })
   }
 
-  /*Method to add comments*/
-  addComments(){
+  /* Set existing comments */
+  setExistingComments(commentsSet : Comments[]):FormArray{
+    const formArray = new FormArray([]);
+    commentsSet.forEach( s => {
+      formArray.push(this.fb.group({
+        reporter:s.reporter,
+        description:s.description
+      }));
+    })
+
+    return formArray;
+  }
+
+
+  /* Method to add comments*/
+  addComments():void{
     this.comments.push(this.commentsItem());
   }
+
+  /* Method to delete comments*/
+  removeComments(commentIndex:number){
+    
+  }
+
 
   /* Submit form */
   formSubmit():void {

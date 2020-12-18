@@ -29,5 +29,9 @@ export class GetBugsService {
     return this.http.get<Bugs[]>("https://bug-report-system-server.herokuapp.com/bugs?page="+page);
   }
 
+  getBugsSearch(title:string,priority:number,reporter:string,status:string):Observable<Bugs[]>{
+    return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+status);
+  }
+
   
 }

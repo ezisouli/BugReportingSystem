@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteBugsService } from '../Services/delete-bugs.service';
 import { GetBugsService } from '../Services/get-bugs.service';
@@ -36,6 +37,8 @@ export class DataTableComponent implements OnInit {
 
   //pagination
   page:number = 0;
+
+  listForm: FormGroup;
 
 
   ngOnInit(): void {
@@ -120,6 +123,11 @@ export class DataTableComponent implements OnInit {
     })
   }
   searchBug(){
+
+    // this.getBugsService.getBugsSearch().subscribe(
+    //   (data) => {
+    //     this.bugTest = data;
+    //   })
     
   }
  
