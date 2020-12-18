@@ -8,12 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IntroComponent } from './intro/intro.component';
 import { DataTableComponent } from './dataTable/dataTable.component';
 import { DataFormComponent } from './dataForm/dataForm.component';
+import { UnsavedFormGuard } from './Services/unsaved-form.guard';
 
 
 const routes : Routes = [
   {path:'',component:IntroComponent},
   {path:'buglist' , component : DataTableComponent},
-  {path:'bugform/:id' , component : DataFormComponent},
+  {path:'bugform/:id' , component : DataFormComponent,
+  canDeactivate: [UnsavedFormGuard]},
+  
   
 ]
 

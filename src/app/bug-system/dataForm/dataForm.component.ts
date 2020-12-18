@@ -5,6 +5,7 @@ import { GetBugsService } from '../Services/get-bugs.service';
 import { PostBugsService } from '../Services/post-bugs.service';
 import { Bugs } from '../dataTable/Bugs';
 import { Comments } from '../dataTable/Comments';
+import { BaseComponent } from '../Services/unsaved-form.guard';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { Comments } from '../dataTable/Comments';
   templateUrl:'./dataForm.component.html',
   styleUrls: ['./dataForm.component.scss']
 })
-export class DataFormComponent implements OnInit {
+
+export class DataFormComponent implements OnInit, BaseComponent{
    
   priority = ['Minor','Major','Critical'];
   reporter = ['QA', 'PO', 'DEV'];
@@ -22,6 +24,8 @@ export class DataFormComponent implements OnInit {
   newBug:Bugs;
   form: FormGroup;
   submitted = false;
+
+  canDeactivate: () => true;
 
   constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
     private getBugsService:GetBugsService, private fb:FormBuilder) {
@@ -142,7 +146,6 @@ export class DataFormComponent implements OnInit {
       console.log("put")
       this.router.navigate(['buglist/'])})
     }
-  
   }
 
 }
