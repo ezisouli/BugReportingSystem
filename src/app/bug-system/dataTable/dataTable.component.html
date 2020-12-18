@@ -7,11 +7,12 @@
       <!-- Search -->
       <!-- <form [formGroup]="listForm"> -->
       <tr>
-        <th><input type="text" placeholder="Search title"></th>
+        <th><input  #searchtitle id="search-title"  [(ngModel)]="titleValue"  type="text" placeholder="Search title"></th>
+        
         <th>
-          <select>
+          <select [(ngModel)]="priorityValue">
             <option value="" disabled selected>Search Priority</option>
-            <option *ngFor="let pr of priority" [ngValue]="pr">
+            <option *ngFor="let pr of priority ; let i of index" [ngValue]="pr" [value]="i" >
               {{pr}}
             </option>
           </select>

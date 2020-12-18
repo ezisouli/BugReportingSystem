@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IntroComponent } from './intro/intro.component';
 import { DataTableComponent } from './dataTable/dataTable.component';
 import { DataFormComponent } from './dataForm/dataForm.component';
@@ -22,7 +22,8 @@ const routes : Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
     IntroComponent,
