@@ -3,12 +3,16 @@ import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } f
 import { Observable } from 'rxjs';
 import { DataFormComponent } from '../dataForm/dataForm.component';
 
+export interface BaseComponent {
+  canDeactivate: () => boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class UnsavedFormGuard implements CanDeactivate<DataFormComponent> {
+export class UnsavedFormGuard implements CanDeactivate<BaseComponent> {
   canDeactivate(
-    component: DataFormComponent,
+    component: BaseComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean {
@@ -18,6 +22,4 @@ export class UnsavedFormGuard implements CanDeactivate<DataFormComponent> {
   }
   
 }
-export interface BaseComponent {
-  canDeactivate: () => boolean;
-}
+
