@@ -241,5 +241,12 @@ export class DataTableComponent implements OnInit {
 
     console.log(this.priorityValue);
   }
+  clearBug(){
+    this.titleValue = "";
+    this.priorityValue = "";
+    this.reporterValue = "";
+    this.statusValue = "";
+    this.searchBug();
+  }
  
 }
