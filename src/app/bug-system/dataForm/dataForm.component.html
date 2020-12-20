@@ -131,6 +131,9 @@
           <label for="descriptionInput">Description</label>
           <input type="text" class="form-control" id="descriptionInput" formControlName="description"
             placeholder="Enter description">
+          <div class="remove-comments" *ngIf="i>0">
+            <button type="button" (click)="removeComments(i)">x</button>
+          </div>
         </div>
       </div>
 

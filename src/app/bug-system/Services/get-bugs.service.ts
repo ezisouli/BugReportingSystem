@@ -17,21 +17,37 @@ export class GetBugsService {
     return this.http.get<Bugs[]>(this.url);
   }
 
-  getBugsSorted(header:string,order:string):Observable<Bugs[]>{
-    return this.http.get<Bugs[]>("https://bug-report-system-server.herokuapp.com/bugs?sort="+header+","+order);
-  }
-  
   getBugById(id: string):Observable<Bugs>{
     return this.http.get<Bugs>(this.url+'/'+id);
   }
 
+  getBugsSorted(header:string,order:string):Observable<Bugs[]>{
+    return this.http.get<Bugs[]>(this.url+"?sort="+header+","+order);
+  }
+
   getBugPage(page:number):Observable<Bugs[]>{
-    return this.http.get<Bugs[]>("https://bug-report-system-server.herokuapp.com/bugs?page="+page);
+    return this.http.get<Bugs[]>(this.url+"?page="+page);
   }
 
   getBugsSearch(title:string,priority:number,reporter:string,status:string):Observable<Bugs[]>{
     return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+status);
   }
 
-  
+  //get page and sorting
+  getBugByPageAndSorting(page:number,header:string,order:string):Observable<Bugs[]>{
+    if(header!=''){
+      return this.http.get<Bugs[]>(this.url+"?page="+ page+"&sort="+header+","+order);
+    }
+    else{return this.http.get<Bugs[]>(this.url+"?page="+ page);}
+  }
+
+  getBugFullSearch(page:number,header:string,order:string,title:string,priority:number,reporter:string,status:string):Observable<Bugs[]>{
+    if(header!=''){
+      return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+status+"&page="+ page+"&sort="+header+","+order);
+    }
+    else{
+      return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+"&page="+ page);
+    }
+  }
+
 }
