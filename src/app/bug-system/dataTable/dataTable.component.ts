@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteBugsService } from '../Services/delete-bugs.service';
 import { GetBugsService } from '../Services/get-bugs.service';
 import { Bugs } from './Bugs';
-
+import { faTrash,faSearch,faEdit,faBroom,faBug,faAngleLeft,faAngleRight} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dataTable',
@@ -13,6 +13,13 @@ import { Bugs } from './Bugs';
 })
 export class DataTableComponent implements OnInit {
   
+  faTrash = faTrash;
+  faSearch = faSearch;
+  faEdit = faEdit;
+  faBroom = faBroom;
+  faBug = faBug;
+  faAngleLeft =faAngleLeft;
+  faAngleRight = faAngleRight;
 
   constructor(private getBugsService:GetBugsService ,
      private route:ActivatedRoute ,

@@ -41,11 +41,20 @@ h1{
   border: 1px solid #ddd;
 }
 
+
+
 #bugs th {
   padding: 0.4em;
   background-color: #52796f;
   color: white;
 }
+
+#btn-search th ,#btn-clear th{
+  // background-color: #a08282;
+  background-color: red;
+}
+
+
 
 #bugs th:hover {background-color:#41605f;}
   
@@ -53,6 +62,12 @@ h1{
   
 #bugs tr:hover {background-color: #ddd;}
   
+
+#btn-delete{
+  //background-image: url('trash.png') no-repeat;
+  background: rgb(186, 38, 38);
+}
+
 
 
 .button {
@@ -65,13 +80,11 @@ h1{
   border: 1px solid;
   opacity: 0.8;
 }
-#btn-search{
-  background-color: #f2f2f2;
 
-}
-#btn-delete{
-  background-image: url('../src/app/images/trash.png')
-}
+// #btn-search th ,#btn-clear th{
+//   background: #f2f2f2;
+// }
+
 
 // #btn-create{
 //   padding: 0.2em 0.1em;
@@ -86,4 +99,11 @@ h1{
 // }
 
 .button:hover {opacity: 1}
+
+#change-page {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+}
 

@@ -9,6 +9,7 @@ import { IntroComponent } from './intro/intro.component';
 import { DataTableComponent } from './dataTable/dataTable.component';
 import { DataFormComponent } from './dataForm/dataForm.component';
 import { UnsavedFormGuard } from './Services/unsaved-form.guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 const routes : Routes = [
@@ -27,7 +28,8 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   exports:[
     IntroComponent,
