@@ -25,7 +25,7 @@ export class DataFormComponent implements OnInit, BaseComponent{
   form: FormGroup;
   submitted = false;
 
-  canDeactivate= () => false;
+  canDeactivate = () => false;
 
   constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
     private getBugsService:GetBugsService, private fb:FormBuilder) {
@@ -120,13 +120,15 @@ export class DataFormComponent implements OnInit, BaseComponent{
 
   /* Submit form */
   formSubmit():void {
-    
     this.canDeactivate= () => true;
+   
     /* Show Validators on submit */
     this.submitted = true;
     
      // stop here if form is invalid
     if (!this.form.valid){
+      
+      
       return;
     }
 

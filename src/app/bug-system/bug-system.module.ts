@@ -14,8 +14,10 @@ import { UnsavedFormGuard } from './Services/unsaved-form.guard';
 const routes : Routes = [
   {path:'',component:IntroComponent},
   {path:'buglist' , component : DataTableComponent},
-  {path:'bugform/:id' , component : DataFormComponent},
-  {path:'create' , component : DataFormComponent}
+  {path:'bugform/:id' , component : DataFormComponent,
+  canDeactivate: [UnsavedFormGuard]},
+  {path:'create' , component : DataFormComponent,
+  canDeactivate: [UnsavedFormGuard]}
   
 ]
 
