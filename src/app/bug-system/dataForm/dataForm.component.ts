@@ -18,7 +18,7 @@ export class DataFormComponent implements OnInit {
   reporter = ['QA', 'PO', 'DEV'];
   status = ['Ready for testing', 'Done', 'Rejected'];
 
-  param : string; 
+  param : string ; 
   newBug:Bugs;
   form: FormGroup;
   submitted = false;
@@ -26,38 +26,37 @@ export class DataFormComponent implements OnInit {
   constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
     private getBugsService:GetBugsService, private fb:FormBuilder) {
     this.param = this.route.snapshot.params.id
-    console.log("param");
+    console.log("param ",this.param);
     console.log(this.route.snapshot.params);
     
   }
 
   ngOnInit(): void  {
-    this.form = this.fb.group({
-      title:[null, Validators.required],
-      description:[null, Validators.required],
-      priority: [null, Validators.required],
-      reporter: [null, Validators.required],
-      status: [null],
-      comments: this.fb.array([
-        this.commentsItem(null,null)
-      ])
-    })
 
-    
-    this.getBugsService.getBugById(this.param).subscribe(data => {
-      this.form.controls['title'].setValue(data.title),
-      this.form.controls['description'].setValue(data.description),
-      this.form.controls['priority'].setValue(data.priority),
-      this.form.controls['status'].setValue(data.status),
-      this.form.controls['reporter'].setValue(data.reporter),
-      this.form.setControl("comments",this.setExistingComments(data.comments))
-      console.log(data.comments)
-      // this.form.setControl('comments', this.fb.array(data.comments || []))
-    
-      //this.form.controls['Description'].setValue(data.comments['reporter'])
-      //this.form.controls['Reporter'].setValue(data.comments['description'])
-     
+    this.form = this.fb.group({
+      title:['', Validators.required],
+      description:['', Validators.required],
+      priority: ['', Validators.required],
+      reporter: ['', Validators.required],
+      status: [''],
+      comments: this.fb.array([
+        this.commentsItem('','')
+      ])
     });
+
+    if(this.param!=undefined){
+      this.getBugsService.getBugById(this.param).subscribe(data => {
+        this.form.controls['title'].setValue(data.title),
+        this.form.controls['description'].setValue(data.description),
+        this.form.controls['priority'].setValue(data.priority),
+        this.form.controls['status'].setValue(data.status),
+        this.form.controls['reporter'].setValue(data.reporter),
+        this.form.setControl('comments',this.setExistingComments(data.comments))
+        console.log("ok");
+        console.log(data.comments)
+      });
+    }
+   
     
     this.form.get('reporter').valueChanges.subscribe(value=>{
 
@@ -109,8 +108,9 @@ export class DataFormComponent implements OnInit {
   }
 
   /* Method to delete comments*/
-  removeComments(commentIndex:number){
-    
+  removeComments(commentIndex:number):void{
+    this.comments.removeAt(commentIndex);
+    console.log(commentIndex)
   }
 
 

@@ -30,13 +30,19 @@ export class DataTableComponent implements OnInit {
   status = ['Ready for testing', 'Done', 'Rejected'];
 
 
-  header:string;
+  
   clicked:boolean[]=[true,false,false,false,false];
   sort:string[] =["desc","asc"];
-  sorting:string;
 
-  //pagination
+  sorting:string = "";
+  header:string  = "";
   page:number = 0;
+
+  /*get values from search*/
+  titleValue: string = '';
+  priorityValue : any ='';  /*??????*/
+  reporterValue: string = '';
+  statusValue: string= '';
 
   listForm: FormGroup;
 
@@ -62,10 +68,21 @@ export class DataTableComponent implements OnInit {
     console.log(this.sorting);
     console.log(this.clicked);
     
-    this.getBugsService.getBugsSorted(this.header,this.sorting).subscribe(
+    // this.getBugsService.getBugsSorted(this.header,this.sorting).subscribe(
+    //   (data) => {
+    //     this.bugs = data;
+    // })
+
+    // this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
+    //   (data) => {
+    //     this.bugs = data;
+    // })
+
+    this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
+      this.priorityValue,this.reporterValue,this.statusValue).subscribe(
       (data) => {
         this.bugs = data;
-    })
+    }) 
 
   }
   
@@ -78,64 +95,150 @@ export class DataTableComponent implements OnInit {
     console.log(bug.id);
     this.deleteBugsService.deleteBug(bug).subscribe(
       () => {
-        const index =this.bugs.indexOf(bug);
+        const index = this.bugs.indexOf(bug);
         this.bugs.splice(index,1);
         console.log(index);
 
         //refresh the page
-        this.getBugsService.getBugPage(this.page).subscribe(
-          (data) => {
-            this.bugs = data;
-        }) 
+
+        // this.getBugsService.getBugPage(this.page).subscribe(
+        //   (data) => {
+        //     this.bugs = data;
+        //     console.log("this header"+this.header);
+        //     console.log("this sorting"+this.sorting);
+        // }) 
+
+        console.log("this header "+ this.header);
+        console.log("this sorting "+ this.sorting);
+        console.log("this page "+ this.page);
+                
+      // this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
+      //   (data) => {
+      //     this.bugs = data;
+      // })
+
+
+      this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
+        this.priorityValue,this.reporterValue,this.statusValue).subscribe(
+        (data) => {
+          this.bugs = data;
+      }) 
   
     })
-    
     
   }
 
   previousPage(){
     if(this.page>0){
       this.page--;
-      this.getBugsService.getBugPage(this.page).subscribe(
+      // this.getBugsService.getBugPage(this.page).subscribe(
+      //   (data) => {
+      //     this.bugs = data;
+      // })
+
+      console.log("this header "+ this.header);
+      console.log("this sorting "+ this.sorting);
+      console.log("this page "+ this.page);
+
+      // this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
+      //   (data) => {
+      //     this.bugs = data;
+      // })
+
+      this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
+        this.priorityValue,this.reporterValue,this.statusValue).subscribe(
         (data) => {
           this.bugs = data;
       })
+
     }
     console.log("page p",this.page);
   }
 
   nextPage(){
 
-    this.getBugsService.getBugPage(this.page+1).subscribe(
+    // this.getBugsService.getBugPage(this.page+1).subscribe(
+    //   (data) => {
+    //     this.bugTest = data;
+
+    //     console.log("length ",this.bugTest.length); 
+
+    //   if(this.bugTest.length>0){
+    //     this.page++;
+    //     this.getBugsService.getBugPage(this.page).subscribe(
+    //       (data) => {
+    //         this.bugs = data;
+    //     })
+    //     console.log("page n",this.page);
+    //   }
+    // })
+
+    // this.getBugsService.getBugByPageAndSorting(this.page+1,this.header,this.sorting).subscribe(
+    //   (data) => {
+    //     this.bugTest = data;
+
+    //   console.log("length ",this.bugTest.length); 
+
+    //   console.log("this header "+ this.header);
+    //   console.log("this sorting "+ this.sorting);
+    //   console.log("this page "+ this.page);
+
+    //   if(this.bugTest.length>0){
+    //         this.page++;
+    //         this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
+    //           (data) => {
+    //             this.bugs = data;
+    //         })
+    //         console.log("page ",this.page);
+    //       }
+
+    // })
+
+
+    this.getBugsService.getBugFullSearch(this.page+1,this.header,this.sorting,this.titleValue,
+      this.priorityValue,this.reporterValue,this.statusValue).subscribe(
       (data) => {
         this.bugTest = data;
 
-        console.log("length ",this.bugTest.length); 
+      console.log("length ",this.bugTest.length); 
+
+      console.log("this header "+ this.header);
+      console.log("this sorting "+ this.sorting);
+      console.log("this page "+ this.page);
 
       if(this.bugTest.length>0){
-        this.page++;
-        this.getBugsService.getBugPage(this.page).subscribe(
-          (data) => {
-            this.bugs = data;
-        })
-        console.log("page n",this.page);
-      }
+            this.page++;
+            this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
+              this.priorityValue,this.reporterValue,this.statusValue).subscribe(
+              (data) => {
+                this.bugs = data;
+            })
+            console.log("page ",this.page);
+          }
+
     })
+
+
   }
 
-  /*get values from search*/
-  titleValue: string ='';
-  priorityValue : any ='';//????????
-  reporterValue: string = '';
-  statusValue: string= '';
+  
 
   searchBug(){
 
-     this.getBugsService.getBugsSearch(this.titleValue,
-       this.priorityValue,this.reporterValue,this.statusValue).subscribe(
-        (data) => {
-         this.bugs = data;
-      })
+    //  this.getBugsService.getBugsSearch(this.titleValue,
+    //    this.priorityValue,this.reporterValue,this.statusValue).subscribe(
+    //     (data) => {
+    //      this.bugs = data;
+    //   })
+
+    /* page = 0 για να ξεκινάει από την πρώτη πάντα */
+    this.page = 0;
+    this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
+      this.priorityValue,this.reporterValue,this.statusValue).subscribe(
+      (data) => {
+        this.bugs = data;
+    })
+
     console.log(this.priorityValue);
   }
  
