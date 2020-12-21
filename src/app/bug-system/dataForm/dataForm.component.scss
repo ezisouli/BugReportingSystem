@@ -2,14 +2,14 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     text-align: center;
     line-height: 1.4;
-    //background-image: url('bug.jpg');
+    background-image: url('bug.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
     height: 100%;
     width: 100%;
     margin: auto;
-    
+    padding-bottom: 2rem;
 }
 
 h1{
@@ -19,13 +19,14 @@ h1{
 }
 
 form {
-    width: 80%;
+    width: 70%;
     background: #6b917e;
     text-align: justify;
     padding: 1.3rem 1.6rem 1rem;
     margin: 1rem auto 1rem auto;
     border-radius: 1rem;
     color: black;
+    opacity: 0.9;
 }
 
 .form-group {
@@ -75,7 +76,12 @@ form {
 
 input.ng-invalid{
     &.ng-dirty{
-        border: 1px solid red;
+        border: 2px solid red;
     }
 }
 
+textarea.ng-invalid{
+    &.ng-dirty{
+        border: 2px solid red;
+    }
+}

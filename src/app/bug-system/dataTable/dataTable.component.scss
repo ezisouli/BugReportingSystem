@@ -2,73 +2,69 @@
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   text-align: center;
   font-size:1em;
-  //@error: url('bug.jpg');
+  //background-image: url('bug.jpg');
   //background-attachment: fixed;
   //background-size: cover;
   //background-position: 50% 50%;
   //height: 100%;
   //width: 100%;
-  padding: 4em ;
+  //margin:auto;
+  padding: 0.8em ;
   overflow: auto;
   max-width: 100%;
-  //margin:auto;
-  
+
 }
 
 h1{
   text-align: center;
   color: #2b363b;
-  // padding-top: 10px;
   padding:0.2em;
 }
 
-#bugs {
+.center{
+  display: table;
+  margin: 0 auto;
+}
+
+#btn-create{
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.bugs {
+  display: table;
   border-collapse: collapse;
-  //display:table;
-  //min-width: 400px;
-  width: 100%;
-  
-  //margin: 1em auto;
-  //padding: 1.3em 1.6em 1em;
-  // display:block;
-  // table-layout: fixed;
-}
-  
-#bugs td, #bugs th {
-  //position: auto;
-  //padding: 0.2em;
-  text-align: center;
-  border: 1px solid #ddd;
+  margin: auto;
 }
 
-
-
-#bugs th {
+.bugs th {
   padding: 0.4em;
-  background-color: #52796f;
   color: white;
 }
 
-#btn-search th ,#btn-clear th{
-  // background-color: #a08282;
-  background-color: red;
+.btn-cell{
+  border:none;
 }
 
-
-
-#bugs th:hover {background-color:#41605f;}
-  
-#bugs tr:nth-child(even){background-color: #f2f2f2;}
-  
-#bugs tr:hover {background-color: #ddd;}
-  
-
-#btn-delete{
-  //background-image: url('trash.png') no-repeat;
-  background: rgb(186, 38, 38);
+.search , .headers {
+  border: 2px solid #ddd;
+  background-color: #52796f;
 }
 
+.bugs-main{
+  border: 2px solid #ddd;
+}
 
+.bugs td, .bugs th {
+  text-align:left;
+}
+
+.search:hover,.headers:hover {background-color:#41605f;}
+  
+.bugs tr:nth-child(even) td:not(:nth-last-of-type(-n+2)){background-color: #f2f2f2;}
+  
+.bugs tr:hover td:not(:nth-last-of-type(-n+2)){background-color: #ddd;}
+  
 
 .button {
   display: block;
@@ -81,29 +77,19 @@ h1{
   opacity: 0.8;
 }
 
-// #btn-search th ,#btn-clear th{
-//   background: #f2f2f2;
-// }
-
-
-// #btn-create{
-//   padding: 0.2em 0.1em;
-// }
-
-// #btn-edit{
-//   padding: 0.2em 0.1em;
-// }
-
-// #btn-delete{
-//   padding: 0.2em 0.1em;
-// }
-
 .button:hover {opacity: 1}
+
+#btn-delete{
+  background: rgb(186, 38, 38);
+}
 
 #change-page {
   display:flex;
   justify-content: center;
   align-items: center;
-  margin: 2em;
+  margin: 1em 1em 1em;
+}
+.page{
+  margin: 1em;
 }
 
