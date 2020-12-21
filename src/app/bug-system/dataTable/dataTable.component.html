@@ -1,6 +1,7 @@
 <div class="content">
 
-  <h1>List of Bugs</h1>
+  <!-- <h1>List of Bugs</h1> -->
+  <h1>Bug List</h1>
 
   <div class="center">
 
@@ -10,8 +11,8 @@
 
     <table class="bugs">
       <thead>
+
         <!-- Search -->
-        <!-- <form [formGroup]="listForm"> -->
         <tr>
           <th class="search">
             <input #searchtitle id="search-title" [(ngModel)]="titleValue" type="text" placeholder="Search title">
@@ -52,7 +53,7 @@
             </button>
           </th>
         </tr>
-        <!-- </form> -->
+
         <!-- Search -->
 
         <!-- Headers -->
@@ -102,11 +103,11 @@
 
   <!-- Change page -->
   <div id="change-page">
-    <button class="btn button" id="btn-previous" (click)="previousPage()">
-      <fa-icon [icon]="faAngleLeft"></fa-icon>Previous
+    <button *ngIf="page>0" class="btn button" id="btn-previous" (click)="previousPage()">
+      <fa-icon [icon]="faAngleLeft"></fa-icon> Previous
     </button>
     <div class="page"> Page {{page}} </div>
-    <button class="btn button" id="btn-next" (click)="nextPage()">Next
+    <button class="btn button" id="btn-next" (click)="nextPage()"> Next
       <fa-icon [icon]="faAngleRight"></fa-icon>
     </button>
   </div>

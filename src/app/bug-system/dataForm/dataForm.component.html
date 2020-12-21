@@ -6,9 +6,7 @@
     <div class="form-group">
       <label for="titleInput">Title</label>
       <input type="text" class="form-control" id="titleInput" placeholder="Enter title" formControlName="title">
-      <!-- <div class="text-danger" *ngIf="form.get('title').errors?.required && form.get('title').dirty">
-        Field is required
-      </div> -->
+
       <span class="text-danger" *ngIf="(form.get('title').dirty || submitted) && form.get('title').errors?.required">
         Field is required
       </span>
@@ -20,9 +18,7 @@
       <label for="descriptionInput">Description</label>
       <textarea class="form-control-description" id="descriptionInput" placeholder="Enter description"
         formControlName="description"></textarea>
-      <!-- <div class="text-danger" *ngIf="form.get('description').errors?.required && form.get('description').dirty">
-        Field is required
-      </div> -->
+
       <span class="text-danger"
         *ngIf="(form.get('description').dirty || submitted) && form.get('description').errors?.required">
         Field is required
@@ -50,9 +46,6 @@
         <label class="form-check-label" for="critical">Critical</label>
       </div>
 
-      <!-- <div class="text-danger" *ngIf="form.get('priority').invalid && form.get('priority').dirty">
-        Field is required
-      </div> -->
       <span class="text-danger"
         *ngIf="(form.get('priority').dirty || submitted) && form.get('priority').errors?.required">
         Field is required
@@ -70,9 +63,7 @@
           {{rp}}
         </option>
       </select>
-      <!-- <div class="text-danger" *ngIf="form.get('reporter').invalid && form.get('reporter').dirty">
-        Field is required
-      </div> -->
+
 
       <span class="text-danger"
         *ngIf="(form.get('reporter').dirty || submitted) && form.get('reporter').errors?.required">
@@ -90,9 +81,6 @@
           {{st}}
         </option>
       </select>
-      <!-- <div class="text-danger" *ngIf="form.get('status').invalid && form.get('status').dirty">
-        Field is required
-      </div> -->
 
       <span class="text-danger" *ngIf="(form.get('status').dirty || submitted) && form.get('status').errors?.required">
         Field is required
@@ -101,37 +89,43 @@
     <!-- Status -->
 
     <!-- Comments -->
-    <label>Comments</label>
+    <br>
+    <label>Comments</label> &nbsp;
+    <fa-icon [icon]="faComment"></fa-icon>
 
     <div class="comments">
       <div class="form-array" formArrayName="comments" *ngFor="let comment of comments.controls; let i = index">
         <hr *ngIf="i>0">
         <div [formGroupName]="i">
+
+          <div *ngIf="i>0">
+            <button type="button" class="remove-comments btn-dark float-right" (click)="removeComments(i)">
+              <fa-icon [icon]="faTimes"></fa-icon>
+            </button>
+          </div>
+
           <label for="nameInput">Name</label>
           <input type="text" class="form-control" id="nameInput" formControlName="reporter" placeholder="Enter name">
+
           <label for="descriptionInput">Description</label>
           <input type="text" class="form-control" id="descriptionInput" formControlName="description"
             placeholder="Enter description">
-          <div class="remove-comments" *ngIf="i>0">
-            <button type="button" (click)="removeComments(i)">x</button>
-          </div>
+
         </div>
       </div>
 
       <!-- Add comments button -->
       <div>
-        <button type="button" (click)="addComments()">Add Comments</button>
+        <button type="button" class="add-comments" (click)="addComments()">Add Comments</button>
       </div>
+      <!-- Add comments button -->
 
     </div>
     <!-- Comments -->
 
-
-
     <!-- Submit -->
     <div class="form-group">
-      <!-- <button class="btn" class="submit-button" type="submit" [disabled]="!form.valid">Submit</button> -->
-      <button class="btn" class="submit-button" type="submit">Submit</button>
+      <button class="btn" class="submit-button" type="submit">SUBMIT</button>
     </div>
     <!-- Submit -->
 

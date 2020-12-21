@@ -10,6 +10,8 @@ import { DataTableComponent } from './dataTable/dataTable.component';
 import { DataFormComponent } from './dataForm/dataForm.component';
 import { UnsavedFormGuard } from './Services/unsaved-form.guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './Services/auth.interceptor';
 
 
 const routes : Routes = [
@@ -38,6 +40,10 @@ const routes : Routes = [
     NavComponent,
     FooterComponent,
     ContentComponent
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ]
+
 })
 export class BugSystemModule { }

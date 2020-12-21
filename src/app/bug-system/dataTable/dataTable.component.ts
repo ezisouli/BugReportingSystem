@@ -44,6 +44,7 @@ export class DataTableComponent implements OnInit {
   sorting:string = "";
   header:string  = "";
   page:number = 0;
+  pageNoMore:boolean = false;
 
   /*get values from search*/
   titleValue: string = '';
@@ -107,6 +108,7 @@ export class DataTableComponent implements OnInit {
     
   }
 
+
   previousPage(){
     if(this.page>0){
       this.page--;
@@ -122,13 +124,13 @@ export class DataTableComponent implements OnInit {
   }
 
   nextPage(){
+
     this.getBugsService.getBugFullSearch(this.page+1,this.header,this.sorting,this.titleValue,
       this.priorityValue,this.reporterValue,this.statusValue).subscribe(
       (data) => {
         this.bugTest = data;
-
+ 
       console.log("length ",this.bugTest.length); 
-
       console.log("this header "+ this.header);
       console.log("this sorting "+ this.sorting);
       console.log("this page "+ this.page);
@@ -141,7 +143,7 @@ export class DataTableComponent implements OnInit {
                 this.bugs = data;
             })
             console.log("page ",this.page);
-          }
+      }
 
     })
 

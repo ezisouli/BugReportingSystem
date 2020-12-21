@@ -6,6 +6,7 @@ import { PostBugsService } from '../Services/post-bugs.service';
 import { Bugs } from '../dataTable/Bugs';
 import { Comments } from '../dataTable/Comments';
 import { BaseComponent } from '../Services/unsaved-form.guard';
+import { faTimes,faComment} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,6 +16,9 @@ import { BaseComponent } from '../Services/unsaved-form.guard';
 })
 
 export class DataFormComponent implements OnInit, BaseComponent{
+
+  faTimes = faTimes;
+  faComment = faComment;
    
   priority = ['Minor','Major','Critical'];
   reporter = ['QA', 'PO', 'DEV'];
