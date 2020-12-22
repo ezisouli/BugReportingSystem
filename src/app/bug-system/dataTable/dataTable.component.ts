@@ -68,15 +68,7 @@ export class DataTableComponent implements OnInit {
     console.log(this.sorting);
     console.log(this.clicked);
     
-    // this.getBugsService.getBugsSorted(this.header,this.sorting).subscribe(
-    //   (data) => {
-    //     this.bugs = data;
-    // })
 
-    // this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
-    //   (data) => {
-    //     this.bugs = data;
-    // })
 
     this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
       this.priorityValue,this.reporterValue,this.statusValue).subscribe(
@@ -101,23 +93,6 @@ export class DataTableComponent implements OnInit {
 
         //refresh the page
 
-        // this.getBugsService.getBugPage(this.page).subscribe(
-        //   (data) => {
-        //     this.bugs = data;
-        //     console.log("this header"+this.header);
-        //     console.log("this sorting"+this.sorting);
-        // }) 
-
-        console.log("this header "+ this.header);
-        console.log("this sorting "+ this.sorting);
-        console.log("this page "+ this.page);
-                
-      // this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
-      //   (data) => {
-      //     this.bugs = data;
-      // })
-
-
       this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
         this.priorityValue,this.reporterValue,this.statusValue).subscribe(
         (data) => {
@@ -131,19 +106,13 @@ export class DataTableComponent implements OnInit {
   previousPage(){
     if(this.page>0){
       this.page--;
-      // this.getBugsService.getBugPage(this.page).subscribe(
-      //   (data) => {
-      //     this.bugs = data;
-      // })
+
 
       console.log("this header "+ this.header);
       console.log("this sorting "+ this.sorting);
       console.log("this page "+ this.page);
 
-      // this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
-      //   (data) => {
-      //     this.bugs = data;
-      // })
+
 
       this.getBugsService.getBugFullSearch(this.page,this.header,this.sorting,this.titleValue,
         this.priorityValue,this.reporterValue,this.statusValue).subscribe(
@@ -156,43 +125,6 @@ export class DataTableComponent implements OnInit {
   }
 
   nextPage(){
-
-    // this.getBugsService.getBugPage(this.page+1).subscribe(
-    //   (data) => {
-    //     this.bugTest = data;
-
-    //     console.log("length ",this.bugTest.length); 
-
-    //   if(this.bugTest.length>0){
-    //     this.page++;
-    //     this.getBugsService.getBugPage(this.page).subscribe(
-    //       (data) => {
-    //         this.bugs = data;
-    //     })
-    //     console.log("page n",this.page);
-    //   }
-    // })
-
-    // this.getBugsService.getBugByPageAndSorting(this.page+1,this.header,this.sorting).subscribe(
-    //   (data) => {
-    //     this.bugTest = data;
-
-    //   console.log("length ",this.bugTest.length); 
-
-    //   console.log("this header "+ this.header);
-    //   console.log("this sorting "+ this.sorting);
-    //   console.log("this page "+ this.page);
-
-    //   if(this.bugTest.length>0){
-    //         this.page++;
-    //         this.getBugsService.getBugByPageAndSorting(this.page,this.header,this.sorting).subscribe(
-    //           (data) => {
-    //             this.bugs = data;
-    //         })
-    //         console.log("page ",this.page);
-    //       }
-
-    // })
 
 
     this.getBugsService.getBugFullSearch(this.page+1,this.header,this.sorting,this.titleValue,
@@ -225,11 +157,7 @@ export class DataTableComponent implements OnInit {
 
   searchBug(){
 
-    //  this.getBugsService.getBugsSearch(this.titleValue,
-    //    this.priorityValue,this.reporterValue,this.statusValue).subscribe(
-    //     (data) => {
-    //      this.bugs = data;
-    //   })
+
 
     /* page = 0 για να ξεκινάει από την πρώτη πάντα */
     this.page = 0;
