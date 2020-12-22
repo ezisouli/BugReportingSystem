@@ -124,6 +124,7 @@ export class DataFormComponent implements OnInit, BaseComponent{
 
   /* Submit form */
   formSubmit():void {
+    
     this.canDeactivate= () => true;
    
     /* Show Validators on submit */
