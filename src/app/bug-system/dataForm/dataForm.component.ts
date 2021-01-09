@@ -6,6 +6,7 @@ import { PostBugsService } from '../Services/post-bugs.service';
 import { Bugs } from '../dataTable/Bugs';
 import { Comments } from '../dataTable/Comments';
 import { BaseComponent } from '../Services/unsaved-form.guard';
+import { faTimes,faComment} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,6 +16,9 @@ import { BaseComponent } from '../Services/unsaved-form.guard';
 })
 
 export class DataFormComponent implements OnInit, BaseComponent{
+
+  faTimes = faTimes;
+  faComment = faComment;
    
   priority = ['Minor','Major','Critical'];
   reporter = ['QA', 'PO', 'DEV'];
@@ -25,7 +29,7 @@ export class DataFormComponent implements OnInit, BaseComponent{
   form: FormGroup;
   submitted = false;
 
-  canDeactivate= () => false;
+  canDeactivate = () => false;
 
   constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
     private getBugsService:GetBugsService, private fb:FormBuilder) {
@@ -122,11 +126,14 @@ export class DataFormComponent implements OnInit, BaseComponent{
   formSubmit():void {
     
     this.canDeactivate= () => true;
+   
     /* Show Validators on submit */
     this.submitted = true;
     
      // stop here if form is invalid
     if (!this.form.valid){
+      
+      
       return;
     }
 

@@ -43,10 +43,10 @@ export class GetBugsService {
 
   getBugFullSearch(page:number,header:string,order:string,title:string,priority:number,reporter:string,status:string):Observable<Bugs[]>{
     if(header!=''){
-      return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+status+"&page="+ page+"&sort="+header+","+order);
+      return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+status+"&page="+page+"&sort="+header+","+order);
     }
     else{
-      return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+"&page="+ page);
+      return this.http.get<Bugs[]>(this.url+"?title="+ title +"&priority="+priority+"&reporter="+reporter+"&status="+status+"&page="+page);
     }
   }
 

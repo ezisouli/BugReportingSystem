@@ -1,15 +1,17 @@
+$submit: #41605f;
+
 .content {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
     text-align: center;
     line-height: 1.4;
-    //background-image: url('bug.jpg');
+    background-image: url('bug.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
     height: 100%;
     width: 100%;
     margin: auto;
-    
+    padding-bottom: 2rem;
 }
 
 h1{
@@ -19,63 +21,109 @@ h1{
 }
 
 form {
-    width: 80%;
+    width: 55%;
     background: #6b917e;
     text-align: justify;
-    padding: 1.3rem 1.6rem 1rem;
+    padding: 1.3rem 2rem 1rem;
     margin: 1rem auto 1rem auto;
     border-radius: 1rem;
     color: black;
+    opacity: 0.9;
 }
 
-.form-group {
+.form-group , .form-array {
     margin: 0 auto 0.25rem auto;
     padding: 0.25rem;
 }
 
 .form-control {
+    border: none;
+    border: 1px solid rgba(0,0,0,.1);
+    outline:none;
     display: block;
     width: 100%;
     height: 2.375rem;
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;
     background-clip: padding-box;
-    border: 1px solid #2b363b;
+    margin-bottom: 0.5rem;
 }
 
 .form-control-description {
+    border: none;
+    border: 1px solid rgba(0,0,0,.1);
+    outline:none;
     display: block;
     width: 100%;
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;
     background-clip: padding-box;
-    border: 1px solid #2b363b;
-    min-height: 10rem;
-    max-height: 20rem;
+    min-height: 5rem;
+    max-height: 10rem;
 }
+
+.comments{
+    width: 100%;
+    padding: 1rem;
+    background: #557565;
+    text-align: justify;
+    border-radius: 1rem;
+    cursor: pointer;
+} 
 
 .submit-button {
     display: block;
-    margin: 0 auto;
-    width: 50%;
-    padding: 1rem;
-    background: #e2e9e5;
-    color:#2b363b;
-    font-family: 'Poppins';
-    border-radius: 1rem;
+    margin: 0.4rem auto;
+    padding: 0.4rem 4rem;
+    background: $submit;
+    color: #e2e9e5;
+    border-radius: 0.2rem;
     cursor: pointer;
-    border: 1px solid;
-    opacity: 0.8;
+    border: none;
+    border: 1px solid rgba(0,0,0,.1);
+    outline:none;
+    transition: .2s all ease-in-out;
+    opacity: 0.9;
+    font-size: large;
+
 }
 
 .submit-button:hover {opacity: 1}
-
 
 /* validators */
 
 input.ng-invalid{
     &.ng-dirty{
-        border: 1px solid red;
+        border: 2px solid  rgb(186, 38, 38);
     }
 }
 
+textarea.ng-invalid{
+    &.ng-dirty{
+        border: 2px solid  rgb(186, 38, 38);
+    }
+}
+
+
+/* buttons */
+
+.remove-comments{
+    display: block;
+    margin-bottom: 0.4rem;
+    margin-right: 0.1rem;
+}
+
+.add-comments{
+    display: block;
+    background: $submit;
+    color: #e2e9e5;
+    padding: 0.4rem;
+    border-radius: 0.6rem;
+    background: #41605f;
+    color:white;
+    cursor: pointer;
+    border: none;
+    border: 1px solid rgba(0,0,0,.1);
+    outline:none;
+    
+}

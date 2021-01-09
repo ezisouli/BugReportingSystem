@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteBugsService } from '../Services/delete-bugs.service';
 import { GetBugsService } from '../Services/get-bugs.service';
 import { Bugs } from './Bugs';
-
+import { faTrash,faSearch,faEdit,faBroom,faBug,faAngleLeft,faAngleRight} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dataTable',
@@ -13,6 +13,13 @@ import { Bugs } from './Bugs';
 })
 export class DataTableComponent implements OnInit {
   
+  faTrash = faTrash;
+  faSearch = faSearch;
+  faEdit = faEdit;
+  faBroom = faBroom;
+  faBug = faBug;
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
 
   constructor(private getBugsService:GetBugsService ,
      private route:ActivatedRoute ,
@@ -37,6 +44,7 @@ export class DataTableComponent implements OnInit {
   sorting:string = "";
   header:string  = "";
   page:number = 0;
+  pageNoMore:boolean = false;
 
   /*get values from search*/
   titleValue: string = '';
@@ -103,6 +111,7 @@ export class DataTableComponent implements OnInit {
     
   }
 
+
   previousPage(){
     if(this.page>0){
       this.page--;
@@ -126,14 +135,12 @@ export class DataTableComponent implements OnInit {
 
   nextPage(){
 
-
     this.getBugsService.getBugFullSearch(this.page+1,this.header,this.sorting,this.titleValue,
       this.priorityValue,this.reporterValue,this.statusValue).subscribe(
       (data) => {
         this.bugTest = data;
-
+ 
       console.log("length ",this.bugTest.length); 
-
       console.log("this header "+ this.header);
       console.log("this sorting "+ this.sorting);
       console.log("this page "+ this.page);
@@ -146,7 +153,7 @@ export class DataTableComponent implements OnInit {
                 this.bugs = data;
             })
             console.log("page ",this.page);
-          }
+      }
 
     })
 
@@ -154,7 +161,6 @@ export class DataTableComponent implements OnInit {
   }
 
   
-
   searchBug(){
 
 
@@ -169,6 +175,7 @@ export class DataTableComponent implements OnInit {
 
     console.log(this.priorityValue);
   }
+
   clearBug(){
     this.titleValue = "";
     this.priorityValue = "";

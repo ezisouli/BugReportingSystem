@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BugSystemModule } from './bug-system/bug-system.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     BugSystemModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

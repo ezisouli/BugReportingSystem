@@ -9,13 +9,18 @@ import { IntroComponent } from './intro/intro.component';
 import { DataTableComponent } from './dataTable/dataTable.component';
 import { DataFormComponent } from './dataForm/dataForm.component';
 import { UnsavedFormGuard } from './Services/unsaved-form.guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './Services/auth.interceptor';
 
 
 const routes : Routes = [
   {path:'',component:IntroComponent},
   {path:'buglist' , component : DataTableComponent},
-  {path:'bugform/:id' , component : DataFormComponent},
-  {path:'create' , component : DataFormComponent}
+  {path:'bugform/:id' , component : DataFormComponent,
+  canDeactivate: [UnsavedFormGuard]},
+  {path:'create' , component : DataFormComponent,
+  canDeactivate: [UnsavedFormGuard]}
   
 ]
 
@@ -25,7 +30,8 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   exports:[
     IntroComponent,
@@ -34,6 +40,10 @@ const routes : Routes = [
     NavComponent,
     FooterComponent,
     ContentComponent
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ]
+
 })
 export class BugSystemModule { }
