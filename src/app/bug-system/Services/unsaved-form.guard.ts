@@ -16,10 +16,9 @@ export class UnsavedFormGuard implements CanDeactivate<BaseComponent> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean {
-      if (!component.canDeactivate()) {      
-        return window.confirm("Are you sure you want to leave the page?");    }
-    return true;
+      if (!component.canDeactivate()) {
+        return window.confirm('Are you sure you want to leave the page?');    }
+      return true;
   }
-  
 }
 

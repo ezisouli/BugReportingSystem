@@ -9,7 +9,7 @@ import { Bugs } from '../dataTable/Bugs';
 
 export class GetBugsService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   url:string = "https://bug-report-system-server.herokuapp.com/bugs";
 
