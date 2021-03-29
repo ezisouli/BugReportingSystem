@@ -16,24 +16,49 @@ import {DataTableResolver} from './dataTable/dataTable.resolver';
 
 
 const routes: Routes = [
-  {path: '', component: IntroComponent},
-  {path: 'buglist' , component : DataTableComponent, resolve: {dataTableData: DataTableResolver}},
-  {path: 'bugform/:id' , component : DataFormComponent,
-  canDeactivate: [UnsavedFormGuard]},
-  {path: 'create' , component : DataFormComponent,
-  canDeactivate: [UnsavedFormGuard]}
-]
+  {
+    path: '',
+    component: IntroComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'buglist'
+      },
+      {
+        path: 'buglist' ,
+        component : DataTableComponent,
+        resolve: {dataTableData: DataTableResolver}
+      },
+      {
+        path: 'bugform/:id' ,
+        component : DataFormComponent,
+        canDeactivate: [UnsavedFormGuard]
+      },
+      {
+        path: 'create' ,
+        component : DataFormComponent,
+        canDeactivate: [UnsavedFormGuard]
+      }
+    ]
+  }
+];
 
 @NgModule({
-  declarations: [DataTableComponent, DataFormComponent, NavComponent, FooterComponent, ContentComponent, IntroComponent],
+  declarations: [DataTableComponent,
+    DataFormComponent,
+    NavComponent,
+    FooterComponent,
+    ContentComponent,
+    IntroComponent
+  ],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forChild(routes),
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule
   ],
-  exports:[
+  exports: [
     IntroComponent,
     DataTableComponent,
     DataFormComponent,

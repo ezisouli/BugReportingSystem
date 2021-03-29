@@ -6,12 +6,12 @@ import { PostBugsService } from '../Services/post-bugs.service';
 import { Bugs } from '../dataTable/Bugs';
 import { Comments } from '../dataTable/Comments';
 import { BaseComponent } from '../Services/unsaved-form.guard';
-import { faTimes,faComment} from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faComment} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
   selector: 'app-dataForm',
-  templateUrl:'./dataForm.component.html',
+  templateUrl: './dataForm.component.html',
   styleUrls: ['./dataForm.component.scss']
 })
 
@@ -19,24 +19,24 @@ export class DataFormComponent implements OnInit, BaseComponent{
 
   faTimes = faTimes;
   faComment = faComment;
-   
+
   priority = ['Minor','Major','Critical'];
   reporter = ['QA', 'PO', 'DEV'];
   status = ['Ready for testing', 'Done', 'Rejected'];
 
-  param : string ; 
+  param : string ;
   newBug:Bugs;
   form: FormGroup;
   submitted = false;
 
   canDeactivate = () => false;
 
-  constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router, 
+  constructor(private postBugsService:PostBugsService, private route:ActivatedRoute, private router:Router,
     private getBugsService:GetBugsService, private fb:FormBuilder) {
     this.param = this.route.snapshot.params.id
     console.log("param ",this.param);
     console.log(this.route.snapshot.params);
-    
+
   }
 
   ngOnInit(): void  {
@@ -64,35 +64,31 @@ export class DataFormComponent implements OnInit, BaseComponent{
         console.log(data.comments)
       });
     }
-   
-    
+
+
     this.form.get('reporter').valueChanges.subscribe(value=>{
 
       const priorityFormControl = this.form.get('status');
-
-      if (value ==='QA') {
+      if (value === 'QA') {
         priorityFormControl.setValidators(Validators.required);
       }
       else{
         priorityFormControl.clearValidators();
       }
       priorityFormControl.updateValueAndValidity();
-
     })
-
-
   }
-  
+
 
   /*Create getter that returns the FormArray*/
   get comments() {
     return this.form.get('comments') as FormArray
   }
 
-  private commentsItem(Reporter?:string,Description?:string){
+  private commentsItem(Reporter?: string, Description?: string){
     return this.fb.group({
-      reporter:Reporter,
-      description:Description
+      reporter: Reporter,
+      description: Description
     })
   }
 
@@ -124,16 +120,16 @@ export class DataFormComponent implements OnInit, BaseComponent{
 
   /* Submit form */
   formSubmit():void {
-    
+
     this.canDeactivate= () => true;
-   
+
     /* Show Validators on submit */
     this.submitted = true;
-    
+
      // stop here if form is invalid
     if (!this.form.valid){
-      
-      
+
+
       return;
     }
 
@@ -154,6 +150,6 @@ export class DataFormComponent implements OnInit, BaseComponent{
       this.router.navigate(['buglist/'])})
     }
   }
-  
+
 
 }
